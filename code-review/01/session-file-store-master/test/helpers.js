@@ -6,6 +6,8 @@ var os = require('os');
 var path = require('path');
 var clone = require('lodash.clone');
 var cbor = require('cbor-sync');
+var mocha = require('mocha');
+var describe = mocha.describe;
 
 describe('helpers', function () {
   var FIXTURE_SESSIONS_PATH = path.normalize('test/fixtures/sessions');
