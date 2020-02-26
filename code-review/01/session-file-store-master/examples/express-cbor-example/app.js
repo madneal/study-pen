@@ -9,7 +9,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: true,
     saveUninitialized: true,
-    fileExtension:  '.cbor',
+    fileExtension: '.cbor',
     encoding: null,
     encoder: cbor.encode,
     decoder: cbor.decode

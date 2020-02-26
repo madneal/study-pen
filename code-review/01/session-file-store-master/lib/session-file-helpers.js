@@ -125,7 +125,7 @@ var helpers = {
       if (err) return callback(err);
       if (files.length === 0) return callback();
 
-      var bagpipe = new (options.reapMaxConcurrent);
+      var bagpipe = new Bagpipe(options.reapMaxConcurrent);
 
       var errors = [];
       files.forEach(function (file, i) {
