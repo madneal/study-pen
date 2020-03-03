@@ -9,5 +9,5 @@ function generateCookie(sessionID, secret) {
 }
 
 
-const result = generateCookie("r22aK4lcpEcITWDfHp3sOsvBgZ1gewtZ", "keyboard cat");
+const result = generateCookie("../../../../etc/passwd", "keyboard cat");
 console.log(result);
