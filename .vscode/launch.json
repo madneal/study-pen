@@ -12,6 +12,15 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/code-review/01/session-file-store-master/examples/connect-example/app.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "cbor",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/code-review/01/session-file-store-master/examples/express-cbor-example/app.js"
         }
     ]
 }
