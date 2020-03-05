@@ -1,0 +1,53 @@
+{
+  "name": "oada-trusted-jws",
+  "version": "1.0.5",
+  "description": "Check if a JWS was signed by an OADA trusted party",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -w",
+    "cover": "istanbul cover _mocha",
+    "lint": "jshint --reporter node_modules/jshint-stylish/stylish.js .",
+    "style": "jscs .",
+    "clean": "rm -rf ./coverage"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OADA/oada-trusted-jws-js.git"
+  },
+  "keywords": [
+    "oada"
+  ],
+  "author": {
+    "name": "Alex Layton",
+    "email": "alex@layton.in",
+    "url": "http://alex.layton.in"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/OADA/oada-trusted-jws-js/issues"
+  },
+  "homepage": "https://github.com/OADA/oada-trusted-jws-js",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "istanbul": "^0.4.5",
+    "jscs": "^3.0.7",
+    "jshint": "^2.10.2",
+    "jshint-stylish": "^2.2.1",
+    "mocha": "^6.1.4",
+    "nock": "^10.0.6"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.5",
+    "debug": "^4.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwks-utils": "^1.0.10",
+    "jws": "^3.2.2",
+    "lodash": "^4.17.11",
+    "pem-jwk": "^2.0.0",
+    "superagent": "^5.1.0"
+  }
+}
