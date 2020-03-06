@@ -1,5 +1,5 @@
 # Getting the source code
-In this challenge, you can download the source code as a zip file using the following link: codereview_03.zip
+In this challenge, you can download the source code as a zip file using the following link: [codereview_03.zip](https://pentesterlab.com/exercises/codereview_03/attachments/0)
 
 ## This challenge
 In this challenge, you are going to review the source code of a JSON Web Token verifier with support for jku.

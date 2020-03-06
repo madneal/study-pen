@@ -66,8 +66,8 @@ module.exports = function(sig, options, callback) {
     trace('Starting trusted lists cache check, trustedListCache = ', trustedListCache);
     const now = Date.now() / 1000; // convert ms to sec
     return Promise.map(trustedListURIs, listURI => {
-      if (  !trustedListCache[listURI] 
-          || trustedListCache[listURI].timeLastFetched < (now - options.trustedListCacheTime)) { // either not cached, or cache is old
+      // either not cached, or cache is old
+      if (!trustedListCache[listURI] || trustedListCache[listURI].timeLastFetched < (now - options.trustedListCacheTime)) { 
         trace('listURI ',listURI,' is not in cache or is stale, fetching...');
         return request.get(listURI)
          .timeout(options.timeout)
@@ -109,6 +109,17 @@ module.exports = function(sig, options, callback) {
     // Now look in the list for a jku or jwk that matches the one on this signature:
     const foundList = lists.reduce((alreadyFound,l) => {
       if (alreadyFound) return alreadyFound;
+      // body example
+      // {
+      //   "version": "2",
+      //   "comments": "Version 2 supports list of jku's in jkus key and a jwks key set",
+      //   "jkus": [
+      //     "https://identity.oada-dev.com/certs"
+      //   ],
+      //   "jwks": {
+      //     "keys": [ ]
+      //   }
+      // }
       if (!l || !l.body) return false;
       if (l.body.version === "2") {
         // v2 trusted list: an object with a list of jku's and/or jwk's
