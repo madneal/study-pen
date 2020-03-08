@@ -105,6 +105,7 @@ describe('oada-trusted-jws', function() {
           jku: TEST_ROOT + 'untrusted',
         },
       });
+      console.log(check(sig));
       return expect(check(sig).get(0)).to.eventually.equal(false);
     });
 
@@ -116,6 +117,7 @@ describe('oada-trusted-jws', function() {
           jku: TEST_ROOT + 'untrusted',
         },
       });
+      console.log(check(sig));
       return expect(check(sig).get(1)).to.eventually.deep.equal(payload);
     });
   });
@@ -130,6 +132,7 @@ describe('oada-trusted-jws', function() {
           jku: TEST_ROOT,
         },
       });
+      console.log(check(sig));
       return expect(check(sig).get(0)).to.eventually.equal(true);
     });
 
@@ -141,6 +144,7 @@ describe('oada-trusted-jws', function() {
           jku: TEST_ROOT,
         },
       });
+      console.log(check(sig));
       return expect(check(sig).get(1)).to.eventually.deep.equal(payload);
     });
   });
@@ -154,6 +158,7 @@ describe('oada-trusted-jws', function() {
           jku: TEST_ROOT, // this would be considered trusted if trusted list was available
         },
       });
+      console.log(check(sig, { disableDefaultTrustedListURI: true }));
       // Disable default trusted list, and don't supply any others:
       return expect(check(sig, { disableDefaultTrustedListURI: true }).get(0)).to.eventually.equal(false);
     });
@@ -167,11 +172,16 @@ describe('oada-trusted-jws', function() {
       });
       // Disable trusted list, and add a bad (down) trusted list:
       this.timeout(2000);
+      console.log(sig, check(sig, { 
+        disableDefaultTrustedListURI: true,
+        additionalTrustedListURIs: [ 'https://fakelist.is.down.and.never.will.return' ],
+      }));
       return expect(check(sig, { 
         disableDefaultTrustedListURI: true,
         additionalTrustedListURIs: [ 'https://fakelist.is.down.and.never.will.return' ],
       }).get(0)).to.eventually.equal(false);
     });
+
     it('should work for customized trusted list', function() {
       const sig = jwt.sign(payload, jwk2pem(privJwk), {
         algorithm: 'RS256',
@@ -179,6 +189,10 @@ describe('oada-trusted-jws', function() {
           kid: privJwk.kid,
           jku: TEST_ROOT, // the new custom trusted list has this listed as trusted JKU
         },
+      });
+      console.log(sig, { 
+        disableDefaultTrustedListURI: true,
+        additionalTrustedListURIs: [ CUSTOM_TRUSTED_LIST ],
       });
       // Disable default list, and use our custom one only:
       return expect(check(sig, { 
