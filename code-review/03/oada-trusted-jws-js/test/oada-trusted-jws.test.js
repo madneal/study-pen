@@ -33,7 +33,7 @@ const check = require('../');
 // We will mock a server for the tests that use this URL:
 const TEST_ROOT = 'https://test.example.org/';
 const CUSTOM_TRUSTED_LIST = 'https://custom.trusted.list.com/';
-const V1_ROOT = 'https://v1.test.example.org'
+const V1_TEST_ROOT = 'https://v1.test.example.org'
 
 // keypair used for signing in the tests:
 const privJwk = require('./private.jwk.json');
@@ -66,11 +66,11 @@ describe('oada-trusted-jws', function() {
     .reply(200, { version: "2", jkus: [ TEST_ROOT ], jwks: { keys: [] } });
     // this is what version 1 trusted list looked like: .reply(200, [TEST_ROOT]);
 
-    const uri_1 = url.parse(V1_ROOT);
-    nock(url.format({protocol: uri_1.protocol, host: uri_1.host}))
+    const v1_uri = url.parse(V1_TEST_ROOT);
+    nock(url.format({protocol: v1_uri.protocol, host: v1_uri.host}))
     .log(log)
-    .get(uri_1)
-    .reply(200, [TEST_ROOT]);
+    .get(v1_uri)
+    .reply(200, TEST_ROOT)
   });
 
   // Setup the mock server to serve it's jwk set at the URL given in the mocked list above
@@ -102,27 +102,16 @@ describe('oada-trusted-jws', function() {
   //   return expect(check(sig)).to.eventually.be.rejected;
   // });
 
-  describe('for version1 valid signature', function() {
-    it('should return true for "truested" return value', () => {
+  describe('for v1 version of signature', function() {
+    it('should return true for "trusted" return value', () => {
       const sig = jwt.sign(payload, jwk2pem(privJwk), {
         algorithm: 'RS256',
         header: {
           kid: privJwk.kid,
-          jku: V1_ROOT
+          jku: TEST_ROOT
         },
       });
       return expect(check(sig).get(0)).to.eventually.equal(true);
-    });
-
-    it('should return the signature payload', () => {
-      const sig = jwt.sign(payload, jwk2pem(privJwk), {
-        algorithm: 'RS256',
-        header: {
-          kid: privJwk.kid,
-          jku: V1_ROOT
-        },
-      });
-      return expect(check(sig).get(1)).to.eventually.deep.equal(payload);
     })
   })
 
@@ -136,6 +125,7 @@ describe('oada-trusted-jws', function() {
           jku: TEST_ROOT + 'untrusted',
         },
       });
+  
       return expect(check(sig).get(0)).to.eventually.equal(false);
     });
 
@@ -147,6 +137,7 @@ describe('oada-trusted-jws', function() {
           jku: TEST_ROOT + 'untrusted',
         },
       });
+  
       return expect(check(sig).get(1)).to.eventually.deep.equal(payload);
     });
   });
@@ -161,6 +152,7 @@ describe('oada-trusted-jws', function() {
           jku: TEST_ROOT,
         },
       });
+  
       return expect(check(sig).get(0)).to.eventually.equal(true);
     });
 
@@ -172,6 +164,7 @@ describe('oada-trusted-jws', function() {
           jku: TEST_ROOT,
         },
       });
+  
       return expect(check(sig).get(1)).to.eventually.deep.equal(payload);
     });
   });
@@ -185,7 +178,6 @@ describe('oada-trusted-jws', function() {
           jku: TEST_ROOT, // this would be considered trusted if trusted list was available
         },
       });
-  
       // Disable default trusted list, and don't supply any others:
       return expect(check(sig, { disableDefaultTrustedListURI: true }).get(0)).to.eventually.equal(false);
     });
