@@ -8,3 +8,9 @@ Once you find where the bug lies, you can submit your answer with the name of th
 
 # Conclusion
 This exercise showed you how to find a weakness in a simple project. By digging into the source code, you can easily find code that does not seem right. I hope you enjoyed learning with PentesterLab.
+
+# Solution
+
+* file: src/CgiNodeSession.js
+* line: 74
+* bug: Directory transfer

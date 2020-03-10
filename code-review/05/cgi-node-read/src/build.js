@@ -35,6 +35,7 @@ function CgiNodeBuilder()
 	 Gets the content for all the given files, concatenates them and returns them.
 	 NOTE: The order of the files does matter, make sure they are in the right order.
 	*/
+	// 'CgiNodeConfig.js', 'CgiNodeContext.js', 'CgiNodeSession.js', 'CgiNodeResponse.js', 'CgiNodeRequest.js', 'CgiNodeParser.js', 'CgiNode.js'
 	this.getSourceCode = function(files)
 	{
 		var code = '';
