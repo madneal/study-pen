@@ -10,3 +10,9 @@ Once you find where the bug lies, you can submit your answer with the name of th
 
 # Conclusion
 This exercise showed you how to find a vulnerability that can potentially have an important impact (even if it does not allow you to bypass the signature mechanism). By digging into the source code, you can easily find code that does not seem right. I hope you enjoyed learning with PentesterLab.
+
+# Solution
+
+* file: index.js
+* line: 160
+* bug: SSRF
