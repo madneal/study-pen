@@ -122,6 +122,7 @@ function CgiNodeBuilder()
 		self.progress('Starting build...');
 
 		// Get the code from the files.
+		// append all files content
 		var code = self.getSourceCode(files);
 		
 		// Write the standard, non-compressed/optimized code to file.

@@ -127,6 +127,7 @@ var CgiParser =
 	 server: is an output object that will contain the server variables
 	 headers: is an output object that will contain the HTTP headers.
 	*/
+	// called by request
 	enviromentVarialbesAndHeaders: function(envVariables, server, headers)
 	{
 		// Traverse the variables and parse them out into server or HTTP header variables.
