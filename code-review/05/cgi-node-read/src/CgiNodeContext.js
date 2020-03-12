@@ -100,6 +100,7 @@ function CgiHttpContext(onFinished)
 		if (options === undefined) options = {encoding: 'utf8'};
 	
 		// Resolve the script path.
+		// process.env.PATH_TRANSLATED
 		var path = self.mapPath(filePath);
 
 		// Get the script file content.

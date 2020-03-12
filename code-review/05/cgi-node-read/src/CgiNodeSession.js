@@ -71,6 +71,7 @@ function CgiHttpSession(request, response)
 	
 		// Get the session ID from the cookies. If there is no session ID stored then create a new ID and create a new file.
 		this.id = (request.cookies.hasOwnProperty(CgiNodeConfig.SessionCookie) ? request.cookies[CgiNodeConfig.SessionCookie] : this.create());
+		// SessionPath: 'D:/Programs/nodejs/sessions/'
 		var path = Path.join(CgiNodeConfig.SessionPath, this.id);
 
 		// If the file does not exist then create another ID.
@@ -120,6 +121,7 @@ function CgiHttpSession(request, response)
 		var session = { id: id, path: Path.join(CgiNodeConfig.SessionPath, id), ipAddress: request.server.remote_addr, cookies: {}, data: {} };
  
 		// Add the session ID cookie to it. {name: <string>, value: <string or array>, expires: <date>, domain: <string>, path: <string>, httpOnly: <boolean>, secure: <boolean>}
+		// SessionCookie: 'CGI-NODE-SESSIONID',
 		session.cookies[CgiNodeConfig.SessionCookie] = {name: CgiNodeConfig.SessionCookie, value: id, httpOnly: true, notSent: true, server: true };
 
 		// Save the session to file.
