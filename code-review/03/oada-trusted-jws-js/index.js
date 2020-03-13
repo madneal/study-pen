@@ -66,7 +66,8 @@ module.exports = function(sig, options, callback) {
     trace('Starting trusted lists cache check, trustedListCache = ', trustedListCache);
     const now = Date.now() / 1000; // convert ms to sec
     return Promise.map(trustedListURIs, listURI => {
-      if (!trustedListCache[listURI] || trustedListCache[listURI].timeLastFetched < (now - options.trustedListCacheTime)) { // either not cached, or cache is old
+      if (  !trustedListCache[listURI] 
+          || trustedListCache[listURI].timeLastFetched < (now - options.trustedListCacheTime)) { // either not cached, or cache is old
         trace('listURI ',listURI,' is not in cache or is stale, fetching...');
         return request.get(listURI)
          .timeout(options.timeout)
