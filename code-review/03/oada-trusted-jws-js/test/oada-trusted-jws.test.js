@@ -107,7 +107,7 @@ describe('oada-trusted-jws', function() {
       const sig = jwt.sign(payload, jwk2pem(privJwk), {
         algorithm: 'RS256',
         header: {
-          kid: privJwk.kid,
+          kid:  privJwk.kid,
           jku: TEST_ROOT
         },
       });
