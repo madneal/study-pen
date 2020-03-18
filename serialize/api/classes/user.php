@@ -14,7 +14,7 @@ class User {
   public static function register($username, $password) {
     $sql = "SELECT * FROM users where login=";
     $sql.= mysql_real_escape_string($username);
-    $sql.= """;
+    $sql.= "";
     $result = mysql_query($sql);
     if ($result) {
       $row = mysql_fetch_assoc($result);
