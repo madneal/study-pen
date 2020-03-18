@@ -37,8 +37,7 @@ class File {
       // verify signature
     if ($sig  != sign($user_id.':'.$uuid)) {
       respond_with(Array("error" => "Invalid Signature"));  
-    }
-    else {
+    } else {
       // retrieve file name
       $sql = "SELECT * FROM users where id=".intval($id);
       $result = mysql_query($sql);
@@ -52,6 +51,7 @@ class File {
       // file read and return content
     }
   }
+
   public static function upload($name, $data, $user_id){ 
     $uuid = uniqid("file").uniqid();
     $sql = "INSERT INTO files (name, uuid, user_id) values ('";
