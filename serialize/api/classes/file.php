@@ -7,8 +7,7 @@ class File {
   function __destruct() {
     // Loogging access 
     $fd = fopen($this->logfile, 'a'); 
-    fwrite($fd, $_GET['action'].":".$this->uuid.' by '.$this->owner."\
-");
+    fwrite($fd, $_GET['action'].":".$this->uuid.' by '.$this->owner."");
     fclose($fd);
   }
    
