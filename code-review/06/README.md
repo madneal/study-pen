@@ -13,3 +13,9 @@ This bug can not be exploited as the value provided will never be sent to the fr
 # Conclusion
 
 This exercise showed you how to find a weakness in a bigger project by focusing on a subset of the code. By digging into the source code, you can easily find code that does not seem right. I hope you enjoyed learning with PentesterLab.
+
+# Soution
+
+* file: router/cors.go
+* line: 137
+* bug type: filter bypass
