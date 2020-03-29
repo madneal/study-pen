@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "CodeLens (Launch) - Exploit",
+            "request": "launch",
+            "mainClass": "Exploit",
+            "projectName": "study-pen_447946a8"
+        },
+        {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
@@ -21,7 +28,6 @@
                 "${workspaceFolder}/code-review/03/oada-trusted-jws-js/test/setup.js",
                 "--timeout",
                 "200",
-                // "${workspaceFolder}/code-review/03/oada-trusted-jws-js/test/mocha.opts",
                 "${file}"
             ],
             "internalConsoleOptions": "openOnSessionStart",
