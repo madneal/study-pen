@@ -28,48 +28,56 @@ func TestStaticFilesDelivery(t *testing.T) {
 
 	httpClient := new(http.Client)
 
-	// Static File - /robots.txt
-	t.Log("Static File - /robots.txt")
-	resp, err := httpClient.Get(ts.URL + "/robots.txt")
+	// Static File - ../../../../etc/passwd
+	t.Log("Static File - ../../../../etc/passwd")
+	resp, err := httpClient.Get(ts.URL + "/../../../../etc/passwd")
 	assert.Nil(t, err)
 	assert.Equal(t, 200, resp.StatusCode)
 	assert.True(t, strings.Contains(responseBody(resp), "User-agent: *"))
 	assert.Equal(t, "no-cache, no-store, must-revalidate", resp.Header.Get(ahttp.HeaderCacheControl))
 
-	// Static File - /assets/css/aah.css
-	t.Log("Static File - /assets/css/aah.css")
-	resp, err = httpClient.Get(ts.URL + "/assets/css/aah.css")
-	assert.Nil(t, err)
-	assert.Equal(t, 200, resp.StatusCode)
-	assert.True(t, strings.Contains(responseBody(resp), "Minimal aah framework application template CSS."))
-	assert.Equal(t, "no-cache, no-store, must-revalidate", resp.Header.Get(ahttp.HeaderCacheControl))
-
-	// Directory Listing - /assets
-	t.Log("Directory Listing - /assets")
-	resp, err = httpClient.Get(ts.URL + "/assets")
-	assert.Nil(t, err)
-	assert.Equal(t, 200, resp.StatusCode)
-	body := responseBody(resp)
-	assert.True(t, strings.Contains(body, "<title>Listing of /assets/</title>"))
-	assert.True(t, strings.Contains(body, "<h1>Listing of /assets/</h1><hr>"))
-	assert.True(t, strings.Contains(body, `<a href="robots.txt">robots.txt</a>`))
-	assert.Equal(t, "", resp.Header.Get(ahttp.HeaderCacheControl))
-
-	// Static File - /assets/img/aah-framework-logo.png
-	t.Log("Static File - /assets/img/aah-framework-logo.png")
-	resp, err = httpClient.Get(ts.URL + "/assets/img/aah-framework-logo.png")
-	assert.Nil(t, err)
-	assert.Equal(t, 200, resp.StatusCode)
-	assert.Equal(t, "image/png", resp.Header.Get(ahttp.HeaderContentType))
-	assert.Equal(t, "6990", resp.Header.Get(ahttp.HeaderContentLength))
-	assert.Equal(t, "no-cache, no-store, must-revalidate", resp.Header.Get(ahttp.HeaderCacheControl))
-
-	// Static File - /assets/img/notfound/file.txt
-	t.Log("Static File - /assets/img/notfound/file.txt")
-	resp, err = httpClient.Get(ts.URL + "/assets/img/notfound/file.txt")
-	assert.Nil(t, err)
-	assert.Equal(t, 200, resp.StatusCode)
-	assert.Equal(t, "0", resp.Header.Get(ahttp.HeaderContentLength))
+//	// Static File - /robots.txt
+//	t.Log("Static File - /robots.txt")
+//	resp, err = httpClient.Get(ts.URL + "/robots.txt")
+//	assert.Nil(t, err)
+//	assert.Equal(t, 200, resp.StatusCode)
+//	assert.True(t, strings.Contains(responseBody(resp), "User-agent: *"))
+//	assert.Equal(t, "no-cache, no-store, must-revalidate", resp.Header.Get(ahttp.HeaderCacheControl))
+//
+//	// Static File - /assets/css/aah.css
+//	t.Log("Static File - /assets/css/aah.css")
+//	resp, err = httpClient.Get(ts.URL + "/assets/css/aah.css")
+//	assert.Nil(t, err)
+//	assert.Equal(t, 200, resp.StatusCode)
+//	assert.True(t, strings.Contains(responseBody(resp), "Minimal aah framework application template CSS."))
+//	assert.Equal(t, "no-cache, no-store, must-revalidate", resp.Header.Get(ahttp.HeaderCacheControl))
+//
+//	// Directory Listing - /assets
+//	t.Log("Directory Listing - /assets")
+//	resp, err = httpClient.Get(ts.URL + "/assets")
+//	assert.Nil(t, err)
+//	assert.Equal(t, 200, resp.StatusCode)
+//	body := responseBody(resp)
+//	assert.True(t, strings.Contains(body, "<title>Listing of /assets/</title>"))
+//	assert.True(t, strings.Contains(body, "<h1>Listing of /assets/</h1><hr>"))
+//	assert.True(t, strings.Contains(body, `<a href="robots.txt">robots.txt</a>`))
+//	assert.Equal(t, "", resp.Header.Get(ahttp.HeaderCacheControl))
+//
+//	// Static File - /assets/img/aah-framework-logo.png
+//	t.Log("Static File - /assets/img/aah-framework-logo.png")
+//	resp, err = httpClient.Get(ts.URL + "/assets/img/aah-framework-logo.png")
+//	assert.Nil(t, err)
+//	assert.Equal(t, 200, resp.StatusCode)
+//	assert.Equal(t, "image/png", resp.Header.Get(ahttp.HeaderContentType))
+//	assert.Equal(t, "6990", resp.Header.Get(ahttp.HeaderContentLength))
+//	assert.Equal(t, "no-cache, no-store, must-revalidate", resp.Header.Get(ahttp.HeaderCacheControl))
+//
+//	// Static File - /assets/img/notfound/file.txt
+//	t.Log("Static File - /assets/img/notfound/file.txt")
+//	resp, err = httpClient.Get(ts.URL + "/assets/img/notfound/file.txt")
+//	assert.Nil(t, err)
+//	assert.Equal(t, 200, resp.StatusCode)
+//	assert.Equal(t, "0", resp.Header.Get(ahttp.HeaderContentLength))
 }
 
 func TestStaticDetectContentType(t *testing.T) {

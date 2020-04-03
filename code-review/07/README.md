@@ -10,3 +10,9 @@ This bug can be exploited and was quickly fixed after being discovered by Pentes
 
 # Conclusion
 This exercise showed you how to find a vulnerability in a more significant project by focusing on a subset of the code. By digging into the source code, you can easily find code that does not seem right. I hope you enjoyed learning with PentesterLab.
+
+# Solution
+
+* file: static.go
+* line: 164 
+* bug type: directory traversal
