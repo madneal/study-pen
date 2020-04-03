@@ -29,12 +29,12 @@ func TestStaticFilesDelivery(t *testing.T) {
 	httpClient := new(http.Client)
 
 	// Static File - ../../../../etc/passwd
-	t.Log("Static File - ../../../../etc/passwd")
-	resp, err := httpClient.Get(ts.URL + "/../../../../etc/passwd")
-	assert.Nil(t, err)
-	assert.Equal(t, 200, resp.StatusCode)
-	assert.True(t, strings.Contains(responseBody(resp), "User-agent: *"))
-	assert.Equal(t, "no-cache, no-store, must-revalidate", resp.Header.Get(ahttp.HeaderCacheControl))
+	//t.Log("Static File - ../../../../etc/passwd")
+	//resp, err := httpClient.Get(ts.URL + "?filepath=../../../../etc/passwd")
+	//assert.Nil(t, err)
+	//assert.Equal(t, 200, resp.StatusCode)
+	//assert.True(t, strings.Contains(responseBody(resp), "User-agent: *"))
+	//assert.Equal(t, "no-cache, no-store, must-revalidate", resp.Header.Get(ahttp.HeaderCacheControl))
 
 //	// Static File - /robots.txt
 //	t.Log("Static File - /robots.txt")
@@ -45,13 +45,14 @@ func TestStaticFilesDelivery(t *testing.T) {
 //	assert.Equal(t, "no-cache, no-store, must-revalidate", resp.Header.Get(ahttp.HeaderCacheControl))
 //
 //	// Static File - /assets/css/aah.css
-//	t.Log("Static File - /assets/css/aah.css")
-//	resp, err = httpClient.Get(ts.URL + "/assets/css/aah.css")
-//	assert.Nil(t, err)
-//	assert.Equal(t, 200, resp.StatusCode)
-//	assert.True(t, strings.Contains(responseBody(resp), "Minimal aah framework application template CSS."))
-//	assert.Equal(t, "no-cache, no-store, must-revalidate", resp.Header.Get(ahttp.HeaderCacheControl))
-//
+	t.Log("Static File - /assets/css/aah.css")
+	//resp, err = httpClient.Get(ts.URL + "/assets/css/aah.css")
+	resp, err := httpClient.Get(ts.URL + "/assets/../../../../Users/dongbing/project/study-pen/android/01/output/apktool.yml")
+	assert.Nil(t, err)
+	assert.Equal(t, 200, resp.StatusCode)
+	assert.True(t, strings.Contains(responseBody(resp), "Minimal aah framework application template CSS."))
+	assert.Equal(t, "no-cache, no-store, must-revalidate", resp.Header.Get(ahttp.HeaderCacheControl))
+
 //	// Directory Listing - /assets
 //	t.Log("Directory Listing - /assets")
 //	resp, err = httpClient.Get(ts.URL + "/assets")
