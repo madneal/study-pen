@@ -11,3 +11,5 @@ To keep the size of the zip low, a lot of files have been removed from the initi
 # Conclusion
 
 This exercise showed you how to find a vulnerability in a very small project and get familiar with Java applications. By digging into the source code, you can easily find code that does not seem right. I hope you enjoyed learning with PentesterLab.
+
+# Solution
