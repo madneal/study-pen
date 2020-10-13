@@ -14,4 +14,6 @@ This exercise showed you how to find a vulnerability in a very small project and
 
 # Solution
 
-filename
+filename: src/main/java/com/minitwit/config/WebConfig.java
+line: 116
+bug type: Cross-Site Request Forgery
