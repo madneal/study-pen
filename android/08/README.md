@@ -1,6 +1,6 @@
 # Getting the Android application
 
-For this challenge, you can download the Android application using the following link: android_07.apk
+For this challenge, you can download the Android application using the following link: android_08.apk
 
 # This challenge
 
@@ -12,4 +12,4 @@ The second way is to extract the application yourself using unzip. From there, y
 
 This time the code has been minimised using ProGuard. This makes reversing the application more complex.
 
-By inspecting the smali code or the java code, you should be able to find the way the key has been encrypted. This time, proper encryption is used with AES. However, the key is not hardcoded. The key is based on the pin code. So you will need to write a small tool to brute force the decryption key based on the pin. The pin is composed of 4 digits and use as a String ("0000" instead of 0). The pin is hashed before being used as a key. You will need to follow the same process to test your tool and get the key to score this challenge.
+By inspecting the smali code or the java code, you should be able to find the way the key has been encrypted. This time, proper encryption is used with AES. However, the key is not hardcoded. The key is based on the pin code and a string downloaded from a server. So you will need to write a small tool to brute force the decryption key based on the pin and the string. The pin is composed of 4 digits and use as a String ("0000" instead of 0). The string and the pin are hashed together before being used as a key. You will need to follow the same process to test your tool and get the key to score this challenge.
