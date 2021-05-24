@@ -11,6 +11,6 @@ This exercise showed you how to find a vulnerability in a more significant proje
 
 # Solution
 
-filename: code-review/10/uadmin/upload_image_handler.go
-line: 24
-bug type: Directory Traversal
+* filename: code-review/10/uadmin/upload_image_handler.go
+* line: 24
+* bug type: Directory Traversal
