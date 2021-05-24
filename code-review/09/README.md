@@ -11,6 +11,6 @@ This exercise showed you how to find a vulnerability in a more significant proje
 
 # Solution
 
-file: export.go
-line: 56
-bug type: sql injection
+* file: export.go
+* line: 56
+* bug type: sql injection
