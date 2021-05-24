@@ -14,6 +14,6 @@ This exercise showed you how to find a vulnerability in a very small project and
 
 # Solution
 
-filename: src/main/resources/spark/template/freemarker/timeline.ftl
-line: 54
-bug type: Cross Site-scripting
+* filename: src/main/resources/spark/template/freemarker/timeline.ftl
+* line: 54
+* bug type: Cross Site-scripting
