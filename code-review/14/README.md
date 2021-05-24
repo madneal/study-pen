@@ -14,6 +14,6 @@ This exercise showed you how to find a vulnerability in a very small project and
 
 # Solution
 
-filename: src/main/resources/spark/template/freemarker/masterTemplate.ftl
-line: 33
-bug type: cross scite-scripting
+* filename: src/main/resources/spark/template/freemarker/masterTemplate.ftl
+* line: 33
+* bug type: cross scite-scripting
