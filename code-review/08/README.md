@@ -11,6 +11,6 @@ This exercise showed you how to find a vulnerability in a more significant proje
 
 # Solution
 
-file: forgot_password_handler.go
-line: 27
-bug type: Host header injection
+* file: forgot_password_handler.go
+* line: 27
+* bug type: Host header injection
