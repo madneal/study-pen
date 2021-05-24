@@ -11,6 +11,6 @@ This exercise showed you how to find a vulnerability in a more significant proje
 
 # Solution
 
-filename: code-review/11/mojoportal/Web/Secure/Login.aspx.cs
-line: 155
-bug type: Open Redirect
+* filename: code-review/11/mojoportal/Web/Secure/Login.aspx.cs
+* line: 155
+* bug type: Open Redirect
